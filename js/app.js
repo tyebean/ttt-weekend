@@ -10,19 +10,11 @@ const wins = [
   [sq3, sq4, sq5],
   [sq6, sq7, sq8]
 ]
-// console.log(wins)
-// console.log(wins[1])
-//if these winning vals reduce to a val of 3 then someone has won
+
 
 /*---------------------------- Variables (state) ----------------------------*/
 
 let boardArr, turn, winner 
-//boardArr - reps squares on board (array)
-//turn - tracks whos turn it is
-//winner - 
-//variable winner rep
-//a tie has occured
-//game still in play
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -31,6 +23,11 @@ const squares = document.querySelectorAll('.square')
 const message = document.querySelector('#message') 
 
 /*----------------------------- Event Listeners -----------------------------*/
+
+addEventListener('click', function(a){
+  // handleClick()
+  console.log('click')
+})
 
 
 
@@ -63,4 +60,18 @@ function render(){
       console.log('game still in progress!')
     }
 } 
+
+//handle click function goals
+  //obtain the index of the square that was clicked by:
+    //getting the index from an id assigned to the element in the HTML
+    //ech id corrosponds to a index in the board arr 
+  //next, look at 5.2
+
+function handleClick(){
+  
+}
+console.log(boardArr)
+console.log(boardArr.length -1) //????
+console.log(squares)
+console.log(squares.length)
 
