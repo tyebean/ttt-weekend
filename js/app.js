@@ -40,56 +40,27 @@ const message = document.querySelector('#message')
 init()
 function init(){
   boardArr = [null, null, null, null, null, null, null, null, null]
-  //The null values will refer to a square being empty, 1 will translate to an X, and -1 will translate to an O
-  console.log(boardArr)
   turn = 1
   winner = null 
-  //render()
+  render()
 }
 
-boardArr.forEach((square, idx) => {
-  idx = squares[0].length
-  square = 1
-  if(square === 1){
-    //put an x on that square? 
-  } else if (winner === -1){
-    //
-  }
-  
-  // console.log(idx)
-})
-
 function render(){
-  // for (let i = 0; i < boardArr.length; i++){
-  //   squares[i].style.backgroundColor = 'red'
-  //   //later note: style each square dependant on the value contained in the current cell being iterated over (-1, 1, or null.)
-  // } 
-  if (winner === 1) {
-    // later note: render these msgs 
-    //render playerX's turn
-    console.log('plr 1')
-  } else if (winner === -1) {
-    //render plrO's turn
-    console.log('plr -1')
-  } else if (winner === 'T') {
-    //render its a tie
-    console.log("it's a Tie")
-  } else {
-    //render congrats!
-    console.log("congrats! this player won!")
-  }
+  boardArr.forEach((square, idx) => {
+    if(square === 1){
+      squares[idx].textContent = "X"
+    } else if (square === -1) {
+      squares[idx].textContent = "O"
+    } else square === null 
+    })
+    if (winner === 1) {
+      message.textContent = "Congrats! Player 1 Won"
+    } else if (winner === -1) {
+      message.textContent = "Congrats! Player 2 Won"
+    } else if (winner === 't') {
+      message.textContent = "The game resulted in a tie"
+    } else {
+      console.log('game still in progress!')
+    }
 } 
-render() 
 
-
-//handle click fucntion #5
-// obtain the index of the square that is being clicked on (use squares[1]) to get the index of the amount of swuares we have?
-
-// function handleClick(){
-//   console.log(squares[1])
-// }
-// console.log(handleClick)
-
-
-//the secret is that when you gather up the .square class in the JS file, it creates an array-like object
-//**which you can then correspond with the index of your board array
