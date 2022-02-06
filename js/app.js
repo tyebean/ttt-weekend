@@ -24,19 +24,14 @@ const message = document.querySelector('#message')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-addEventListener('click', function(a){
-  // handleClick()
-  // console.log(event.target.id)
-})
-
-
+squares.forEach(square => square.addEventListener('click', handleClick))
 
 /*-------------------------------- Functions --------------------------------*/
 
 
 init()
 function init(){
-  boardArr = [1, -1, null, null, null, null, null, null, null]
+  boardArr = [1, null, null, null, null, null, null, null, null]
   turn = 1
   winner = null 
   render()
@@ -50,7 +45,7 @@ function render(){
       squares[idx].textContent = "O"
     } else square === null 
     })
-
+    
     if (winner !== null) {
       console.log('its ${players} turn')
     } else if (winner === 1) {
@@ -62,17 +57,28 @@ function render(){
     }
 } 
 
-//handle click function goals
-  //obtain the index of the square that was clicked by:
-    //getting the index from an id assigned to the element in the HTML
-    //ech id corrosponds to a index in the board arr 
-  //next, look at 5.2
-
-function handleClick(){
-  
+function handleClick(evt){
+  const index = evt.target.id.replace('sq', '')
+  if (boardArr[index] !== null) {
+    return
+  }
+  if (winner !== null){
+    return
+  }
+  boardArr[index] = turn
+  turn = turn * 1 
+  winner = getWinner()
 }
-console.log(boardArr)
-console.log(boardArr.length -1) //????
-console.log(squares)
-console.log(squares.length)
+
+function getWinner(){
+  console.log('getting winner B)')
+}
+getWinner()
+
+
+		  // 5.6.1.1) Loop through the each of the winning combination arrays defined.
+		  // 5.6.1.2) Total up the three board positions using the three indexes in the current combo.
+		  // 5.6.1.3) Convert the total to an absolute value (convert any negative total to positive).
+		  // 5.6.1.4) If the total equals 3, we have a winner! Set the winner variable to the board's value at the index specified by the first index of that winning combination's array by returning that value.
+
 
