@@ -26,7 +26,7 @@ const message = document.querySelector('#message')
 
 addEventListener('click', function(a){
   // handleClick()
-  console.log('click')
+  // console.log(event.target.id)
 })
 
 
@@ -36,7 +36,7 @@ addEventListener('click', function(a){
 
 init()
 function init(){
-  boardArr = [null, null, null, null, null, null, null, null, null]
+  boardArr = [1, -1, null, null, null, null, null, null, null]
   turn = 1
   winner = null 
   render()
@@ -50,14 +50,15 @@ function render(){
       squares[idx].textContent = "O"
     } else square === null 
     })
-    if (winner === 1) {
+
+    if (winner !== null) {
+      console.log('its ${players} turn')
+    } else if (winner === 1) {
       message.textContent = "Congrats! Player 1 Won"
     } else if (winner === -1) {
       message.textContent = "Congrats! Player 2 Won"
     } else if (winner === 't') {
       message.textContent = "The game resulted in a tie"
-    } else {
-      console.log('game still in progress!')
     }
 } 
 
