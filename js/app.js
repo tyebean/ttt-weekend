@@ -92,6 +92,9 @@ function getWinner(){
       winner = 'O'
     }
   }
+  //credits:
+  //instructor help with above index getting ^
+  //fabian was a mad lad with this tie code below v
   if (numOfTurns === 9 && winner === null) {
     winner = 'T'
     message.textContent = 'There was a Tie.'
