@@ -14,7 +14,7 @@ const wins = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let boardArr, turn, winner
+let boardArr, turn, winner, numOfTurns
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -41,6 +41,7 @@ function init(){
   turn = 1
   winner = null 
   render()
+  numOfTurns = 0
 }
 
 //inside of init
@@ -80,6 +81,7 @@ function handleClick(evt){
   }
   boardArr[index] = turn
   turn = turn * -1 
+  numOfTurns += 1
   render()
   getWinner()
 }
@@ -97,25 +99,16 @@ function getWinner(){
     } else if (boardArr[a] + boardArr[b] + boardArr[c] === -3) {
       message.textContent = 'O wins'
     }
-    
-    //figure out if there is a tie
-    if (boardArr === 9){
-      winner = 'T'
-      message.textContent = 'There was a Tie.'
-    }
+  }
+   //figure out if there is a tie
+  if (numOfTurns === 9 && winner === null) {
+    winner = 'T'
+    message.textContent = 'There was a Tie.'
+  } else {
+    return null
   }
 }
 
-
-// 5.6.3) Next, If there's no winner, check if there's a tie:
-
-		// 5.6.4) Set the winner varible to "T" if there are no more nulls in the board array by returning the string "T".
-
-		// 5.6.5) Otherwise return null.
-
-
-//tie 
-//if all the boards are filled up retuen tie 
 
 
 
