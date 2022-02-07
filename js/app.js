@@ -40,18 +40,9 @@ function init(){
   null, null, null]
   turn = 1
   winner = null 
-  render()
   numOfTurns = 0
+  render()
 }
-
-//todo
-//inside of init
-//plrturn = 1
-//turncount = 0
-//write an if statement 
-//if playerturn === 1 
-//change message to reflect this^
-//else player trn === -1
 
 function render(){
   boardArr.forEach((square, idx) => {
@@ -62,16 +53,11 @@ function render(){
     } else square === null 
     })
     
-    if (winner !== null) {
-      console.log('its ${players} turn')
-    } else if (winner === 1) {
-      message.textContent = "Congrats! Player 1 Won"
-    } else if (winner === -1) {
-      message.textContent = "Congrats! Player 2 Won"
-    } else if (winner === 't') {
-      message.textContent = "The game resulted in a tie"
-    }
-  
+    if (turn === 1) {
+      message.textContent = 'plr xs turn'
+    } else if (turn === -1) {
+      message.textContent = 'plr os turn'
+    } 
 } 
 
 function handleClick(evt){
