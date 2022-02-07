@@ -54,9 +54,9 @@ function render(){
     })
     
     if (turn === 1) {
-      message.textContent = 'plr xs turn'
+      message.textContent = "🤗 Player X's Turn 🤗"
     } else if (turn === -1) {
-      message.textContent = 'plr os turn'
+      message.textContent = "💋 Player O's Turn 💋"
     } 
 } 
 
@@ -84,11 +84,11 @@ function getWinner(){
     const b = wins[i][1]
     const c = wins[i][2]
     if (boardArr[a] + boardArr[b] + boardArr[c] === 3){
-    message.textContent = 'X wins'
+    message.textContent = 'Player X wins! 🥰 Congrats, you get a kiss! 💛'
     winner = 'X'
     
     } else if (boardArr[a] + boardArr[b] + boardArr[c] === -3) {
-      message.textContent = 'O wins'
+      message.textContent = 'Player O wins! 😍 Congrats, you get a hug! 💙'
       winner = 'O'
     }
   }
@@ -97,7 +97,7 @@ function getWinner(){
   //fabian was a mad lad with this tie code below v
   if (numOfTurns === 9 && winner === null) {
     winner = 'T'
-    message.textContent = 'There was a Tie.'
+    message.textContent = 'There was a Tie. 😘'
   } else {
     return null
   }
