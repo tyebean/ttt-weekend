@@ -1,41 +1,55 @@
 /*-------------------------------- Constants --------------------------------*/
 
 const wins = [
-  [sq0, sq1, sq2],
-  [sq0, sq4, sq8],
-  [sq0, sq3, sq6],
-  [sq1, sq4, sq7],
-  [sq2, sq4, sq6],
-  [sq2, sq5, sq8],
-  [sq3, sq4, sq5],
-  [sq6, sq7, sq8]
+  [0, 1, 2],
+  [0, 4, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [3, 4, 5],
+  [6, 7, 8]
 ]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let boardArr, turn, winner 
+let boardArr, turn, winner
 
 
 /*------------------------ Cached Element References ------------------------*/
 
 const squares = document.querySelectorAll('.square')
 const message = document.querySelector('#message') 
+const btn = document.querySelector('#btn')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 squares.forEach(square => square.addEventListener('click', handleClick))
+
+btn.addEventListener('click', init)
 
 /*-------------------------------- Functions --------------------------------*/
 
 
 init()
 function init(){
-  boardArr = [1, null, null, null, null, null, null, null, null]
+  boardArr = 
+  [null, null, null,
+  null, null, null, 
+  null, null, null]
   turn = 1
   winner = null 
   render()
 }
+
+//inside of init
+//plrturn = 1
+//turncount = 0
+//write an if statement 
+//if playerturn === 1 
+//change message to reflect this^
+//else player trn === -1
 
 function render(){
   boardArr.forEach((square, idx) => {
@@ -45,7 +59,6 @@ function render(){
       squares[idx].textContent = "O"
     } else square === null 
     })
-    
     if (winner !== null) {
       console.log('its ${players} turn')
     } else if (winner === 1) {
@@ -66,19 +79,48 @@ function handleClick(evt){
     return
   }
   boardArr[index] = turn
-  turn = turn * 1 
-  winner = getWinner()
+  turn = turn * -1 
+  render()
+  getWinner()
 }
+
 
 function getWinner(){
-  console.log('getting winner B)')
+  console.log(boardArr)
+  for(let i = 0; i < wins.length; i++){
+    const a = wins[i][0]
+    const b = wins[i][1]
+    const c = wins[i][2]
+    if (boardArr[a] + boardArr[b] + boardArr[c] === 3){
+    message.textContent = 'X wins'
+    //stop the game using stopndouble button click logic
+    } else if (boardArr[a] + boardArr[b] + boardArr[c] === -3) {
+      message.textContent = 'O wins'
+    }
+    
+    //figure out if there is a tie
+    if (boardArr === 9){
+      winner = 'T'
+      message.textContent = 'There was a Tie.'
+    }
+  }
 }
-getWinner()
 
 
-		  // 5.6.1.1) Loop through the each of the winning combination arrays defined.
-		  // 5.6.1.2) Total up the three board positions using the three indexes in the current combo.
-		  // 5.6.1.3) Convert the total to an absolute value (convert any negative total to positive).
-		  // 5.6.1.4) If the total equals 3, we have a winner! Set the winner variable to the board's value at the index specified by the first index of that winning combination's array by returning that value.
+// 5.6.3) Next, If there's no winner, check if there's a tie:
+
+		// 5.6.4) Set the winner varible to "T" if there are no more nulls in the board array by returning the string "T".
+
+		// 5.6.5) Otherwise return null.
+
+
+//tie 
+//if all the boards are filled up retuen tie 
+
+
+
+
+
+
 
 
