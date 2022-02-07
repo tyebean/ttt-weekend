@@ -44,6 +44,7 @@ function init(){
   numOfTurns = 0
 }
 
+//todo
 //inside of init
 //plrturn = 1
 //turncount = 0
@@ -60,6 +61,7 @@ function render(){
       squares[idx].textContent = "O"
     } else square === null 
     })
+    
     if (winner !== null) {
       console.log('its ${players} turn')
     } else if (winner === 1) {
@@ -69,6 +71,7 @@ function render(){
     } else if (winner === 't') {
       message.textContent = "The game resulted in a tie"
     }
+  
 } 
 
 function handleClick(evt){
@@ -84,6 +87,7 @@ function handleClick(evt){
   numOfTurns += 1
   render()
   getWinner()
+  btn.hidden = false
 }
 
 
@@ -95,12 +99,13 @@ function getWinner(){
     const c = wins[i][2]
     if (boardArr[a] + boardArr[b] + boardArr[c] === 3){
     message.textContent = 'X wins'
-    //stop the game using stopndouble button click logic
+    winner = 'X'
+    
     } else if (boardArr[a] + boardArr[b] + boardArr[c] === -3) {
       message.textContent = 'O wins'
+      winner = 'O'
     }
   }
-   //figure out if there is a tie
   if (numOfTurns === 9 && winner === null) {
     winner = 'T'
     message.textContent = 'There was a Tie.'
@@ -108,8 +113,6 @@ function getWinner(){
     return null
   }
 }
-
-
 
 
 
