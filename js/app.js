@@ -12,6 +12,8 @@ const wins = [
 ]
 
 
+
+
 /*---------------------------- Variables (state) ----------------------------*/
 
 let boardArr, turn, winner, numOfTurns
@@ -54,9 +56,9 @@ function render(){
     })
     
     if (turn === 1) {
-      message.textContent = 'plr xs turn'
+      message.textContent = "X's turn"
     } else if (turn === -1) {
-      message.textContent = 'plr os turn'
+      message.textContent = "O's turn"
     } 
 } 
 
@@ -84,11 +86,11 @@ function getWinner(){
     const b = wins[i][1]
     const c = wins[i][2]
     if (boardArr[a] + boardArr[b] + boardArr[c] === 3){
-    message.textContent = 'X wins'
+    message.textContent = 'X wins! Congrats, you get a hug!'
     winner = 'X'
     
     } else if (boardArr[a] + boardArr[b] + boardArr[c] === -3) {
-      message.textContent = 'O wins'
+      message.textContent = 'O wins! Congrats, you get a kiss!'
       winner = 'O'
     }
   }
@@ -102,6 +104,7 @@ function getWinner(){
     return null
   }
 }
+
 
 
 
